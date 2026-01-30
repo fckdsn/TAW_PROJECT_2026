@@ -1,0 +1,15 @@
+.gallery-thumbnail {
+    height: 200px; 
+    object-fit: cover; 
+    width: 100%;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.gallery-thumbnail:hover {
+    transform: scale(1.03);
+}
+
+.modal {
+    background-color: rgba(0, 0, 0, 0.8);
+}

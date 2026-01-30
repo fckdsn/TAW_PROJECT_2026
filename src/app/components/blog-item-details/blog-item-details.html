@@ -1,0 +1,31 @@
+<div class="container mt-4" *ngIf="!loading && post">
+  <div class="card shadow-sm">
+
+    <img
+      *ngIf="post.image"
+      [src]="post.image"
+      class="card-img-top"
+      alt="Post image">
+
+    <div class="card-body">
+      <h2 class="card-title">{{ post.title }}</h2>
+
+      <p class="text-muted">
+        Autor: {{ post.author }} |
+        {{ post.createdAt | date:'short' }}
+      </p>
+
+      <app-rating [postId]="post.id"></app-rating>
+
+      <hr>
+
+      <p class="card-text">
+        {{ post.text }}
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="text-center mt-5" *ngIf="loading">
+  <div class="spinner-border"></div>
+</div>

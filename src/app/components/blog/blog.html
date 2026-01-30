@@ -1,0 +1,55 @@
+<!-- Tabs -->
+<ul class="nav nav-tabs mb-3">
+  <li class="nav-item">
+    <button
+      class="nav-link"
+      [class.active]="activeTab === 'all'"
+      (click)="setTab('all')">
+      Wszystkie
+    </button>
+  </li>
+
+  <li class="nav-item">
+    <button
+      class="nav-link"
+      [class.active]="activeTab === 'favorites'"
+      (click)="setTab('favorites')">
+      ❤️ Favorites
+    </button>
+  </li>
+</ul>
+
+<div class="row">
+  <!-- 🔥 ИСПРАВЛЕНИЕ: используем trackById вместо track item.id -->
+  @for (
+  item of (visibleItems | filter:filterText | paginate:currentPage:itemsPerPage);
+  track item.id
+) {
+  <div class="col-md-4 mb-3">
+    <blog-item
+      [id]="item.id"
+      [title]="item.title"
+      [text]="item.text"
+      [image]="item.image"
+      [author]="item.author"
+      (deleted)="removeFromList($event)">
+    </blog-item>
+  </div>
+}
+
+<p class="text-center text-muted mt-3">
+  Strona {{ currentPage }} z {{ totalPages }}
+</p>
+
+<app-pagination
+  [totalItems]="(visibleItems | filter:filterText)?.length || 0"
+  [itemsPerPage]="itemsPerPage"
+  [currentPage]="currentPage"
+  (pageChange)="onPageChange($event)">
+</app-pagination>
+
+@if ((visibleItems | filter:filterText)?.length === 0) {
+  <div class="alert alert-warning mt-3">
+    Brak postów do wyświetlenia
+  </div>
+}

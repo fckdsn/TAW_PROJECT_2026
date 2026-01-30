@@ -1,0 +1,21 @@
+.more-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+
+  margin-top: 6px;
+
+  font-size: 0.9rem;
+  font-weight: 500;
+
+  color: #4dabf7;
+  cursor: pointer;
+
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.15s ease;
+}
+
+.more-link:hover {
+  color: #74c0fc;
+  transform: translateX(2px);
+}

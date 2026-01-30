@@ -1,0 +1,21 @@
+.nav-tabs {
+  border-bottom: none;
+}
+
+.nav-tabs .nav-link {
+  color: #aaa;
+  border: none;
+  border-radius: 12px;
+  margin-right: 8px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.nav-tabs .nav-link:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.08);
+}
+
+.nav-tabs .nav-link.active {
+  background: #ff4d6d;
+  color: #fff;
+}

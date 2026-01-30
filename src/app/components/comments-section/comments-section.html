@@ -1,0 +1,45 @@
+@if (comments.length > 0) {
+  <div class="list-group mb-4">
+    @for (comment of comments; track comment) {
+      <div class="list-group-item">
+        <h6 class="mb-1">{{ comment.author }}</h6>
+        <p class="mb-1">{{ comment.text }}</p>
+      </div>
+    }
+  </div>
+} @else {
+  <p class="text-muted">Brak komentarzy. Bądź pierwszy!</p>
+}
+
+<div class="card p-3">
+  <h6>Dodaj komentarz</h6>
+  <form (ngSubmit)="addComment()">
+    <div class="mb-3">
+      <label for="author" class="form-label">Imię/Nick</label>
+      <input
+        type="text"
+        class="form-control"
+        id="author"
+        name="newAuthor"
+        [(ngModel)]="newAuthor"
+        required>
+    </div>
+    <div class="mb-3">
+      <label for="text" class="form-label">Treść</label>
+      <textarea
+        class="form-control"
+        id="text"
+        name="newText"
+        rows="3"
+        [(ngModel)]="newText"
+        required>
+      </textarea>
+    </div>
+    <button
+      type="submit"
+      class="btn btn-primary btn-sm"
+      [disabled]="!newAuthor || !newText">
+      Dodaj
+    </button>
+  </form>
+</div>

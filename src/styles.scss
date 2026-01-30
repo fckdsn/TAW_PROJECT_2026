@@ -1,0 +1,350 @@
+/* ===== DARK MODE ===== */
+.dark-mode {
+  background-color: #0f172a;
+  color: #e2e8f0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Основные элементы */
+.dark-mode body {
+  background-color: #0f172a;
+}
+
+/* Навигация */
+.dark-mode .navbar {
+  background-color: #1e293b !important;
+  border-bottom: 1px solid #334155;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .navbar-brand {
+  color: #f1f5f9 !important;
+  font-weight: 600;
+}
+
+.dark-mode .navbar-nav .nav-link {
+  color: #cbd5e1 !important;
+  transition: color 0.2s ease;
+}
+
+.dark-mode .navbar-nav .nav-link:hover,
+.dark-mode .navbar-nav .nav-link.active {
+  color: #60a5fa !important;
+}
+
+/* Карточки */
+.dark-mode .card {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.dark-mode .card:hover {
+  border-color: #475569;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+
+.dark-mode .card-title {
+  color: #f8fafc;
+}
+
+.dark-mode .card-text {
+  color: #cbd5e1;
+}
+
+/* Формы */
+.dark-mode .form-control {
+  background-color: #334155;
+  color: #f1f5f9;
+  border: 1px solid #475569;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dark-mode .form-control:focus {
+  background-color: #334155;
+  color: #f1f5f9;
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 0.25rem rgba(96, 165, 250, 0.25);
+}
+
+.dark-mode .form-control::placeholder {
+  color: #94a3b8;
+  opacity: 0.8;
+}
+
+.dark-mode .form-label {
+  color: #e2e8f0;
+}
+
+/* Кнопки */
+.dark-mode .btn-outline-secondary {
+  color: #cbd5e1;
+  border-color: #64748b;
+  background-color: transparent;
+  transition: all 0.2s ease;
+}
+
+.dark-mode .btn-outline-secondary:hover {
+  color: #f8fafc;
+  border-color: #94a3b8;
+  background-color: #475569;
+}
+
+.dark-mode .btn-primary {
+  background-color: #3b82f6;
+  border-color: #3b82f6;
+}
+
+.dark-mode .btn-primary:hover {
+  background-color: #2563eb;
+  border-color: #2563eb;
+}
+
+/* Табы */
+.dark-mode .nav-tabs {
+  border-bottom: 1px solid #334155;
+}
+
+.dark-mode .nav-tabs .nav-link {
+  color: #94a3b8;
+  background-color: transparent;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.dark-mode .nav-tabs .nav-link:hover {
+  color: #cbd5e1;
+  border-color: #475569;
+}
+
+.dark-mode .nav-tabs .nav-link.active {
+  color: #60a5fa;
+  background-color: #1e293b;
+  border-color: #475569 #475569 #1e293b;
+}
+
+/* Пагинация */
+.dark-mode .pagination .page-link {
+  background-color: #334155;
+  color: #cbd5e1;
+  border-color: #475569;
+  transition: all 0.2s ease;
+}
+
+.dark-mode .pagination .page-link:hover {
+  background-color: #475569;
+  color: #f1f5f9;
+  border-color: #64748b;
+}
+
+.dark-mode .pagination .page-item.active .page-link {
+  background-color: #3b82f6;
+  border-color: #3b82f6;
+  color: white;
+}
+
+/* Alert сообщения */
+.dark-mode .alert {
+  background-color: #1e293b;
+  color: #cbd5e1;
+  border: 1px solid #334155;
+}
+
+.dark-mode .alert-warning {
+  background-color: #422006;
+  color: #fde68a;
+  border-color: #713f12;
+}
+
+.dark-mode .alert-info {
+  background-color: #0c4a6e;
+  color: #bae6fd;
+  border-color: #075985;
+}
+
+.dark-mode .alert-success {
+  background-color: #064e3b;
+  color: #a7f3d0;
+  border-color: #047857;
+}
+
+/* Модальные окна */
+.dark-mode .modal-content {
+  background-color: #1e293b;
+  color: #e2e8f0;
+  border: 1px solid #334155;
+}
+
+.dark-mode .modal-header {
+  border-bottom: 1px solid #334155;
+}
+
+.dark-mode .modal-footer {
+  border-top: 1px solid #334155;
+}
+
+/* Таблицы */
+.dark-mode .table {
+  color: #cbd5e1;
+}
+
+.dark-mode .table th {
+  background-color: #334155;
+  color: #f1f5f9;
+  border-color: #475569;
+}
+
+.dark-mode .table td {
+  border-color: #475569;
+}
+
+.dark-mode .table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(51, 65, 85, 0.3);
+}
+
+.dark-mode .table-hover tbody tr:hover {
+  background-color: #334155;
+}
+
+/* Списки */
+.dark-mode .list-group-item {
+  background-color: #1e293b;
+  color: #cbd5e1;
+  border-color: #334155;
+}
+
+.dark-mode .list-group-item-action:hover {
+  background-color: #334155;
+  color: #f1f5f9;
+}
+
+/* Progress bars */
+.dark-mode .progress {
+  background-color: #334155;
+}
+
+.dark-mode .progress-bar {
+  background-color: #3b82f6;
+}
+
+/* Badges */
+.dark-mode .badge.bg-secondary {
+  background-color: #64748b !important;
+}
+
+.dark-mode .badge.bg-primary {
+  background-color: #3b82f6 !important;
+}
+
+.dark-mode .badge.bg-success {
+  background-color: #10b981 !important;
+}
+
+/* Dropdowns */
+.dark-mode .dropdown-menu {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+}
+
+.dark-mode .dropdown-item {
+  color: #cbd5e1;
+}
+
+.dark-mode .dropdown-item:hover {
+  background-color: #334155;
+  color: #f1f5f9;
+}
+
+/* Иконки сердечек для лайков */
+.dark-mode .fa-heart {
+  color: #ef4444 !important;
+}
+
+.dark-mode .fa-heart-o {
+  color: #94a3b8 !important;
+}
+
+.dark-mode .fa-heart-o:hover {
+  color: #ef4444 !important;
+}
+
+/* Рейтинг */
+.dark-mode .star-rating .star {
+  color: #64748b;
+}
+
+.dark-mode .star-rating .star.active {
+  color: #f59e0b;
+}
+
+/* Текст muted */
+.dark-mode .text-muted {
+  color: #94a3b8 !important;
+}
+
+/* Borders для разделов */
+.dark-mode .border-top,
+.dark-mode .border-bottom,
+.dark-mode .border {
+  border-color: #334155 !important;
+}
+
+/* Кнопка переключения темы (если есть) */
+.dark-mode .theme-toggle-btn {
+  background-color: #334155;
+  color: #f1f5f9;
+  border: 1px solid #475569;
+}
+
+.dark-mode .theme-toggle-btn:hover {
+  background-color: #475569;
+}
+
+/* Кастомные scrollbar */
+.dark-mode ::-webkit-scrollbar {
+  width: 10px;
+}
+
+.dark-mode ::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+.dark-mode ::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 5px;
+}
+
+.dark-mode ::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* Подсветка текста при поиске */
+.dark-mode .highlight {
+  background-color: rgba(96, 165, 250, 0.3);
+  color: #f8fafc;
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .dark-mode .navbar-collapse {
+    background-color: #1e293b;
+    border-top: 1px solid #334155;
+    padding: 1rem;
+  }
+  
+  .dark-mode .dropdown-menu {
+    background-color: #334155;
+  }
+}
+
+/* Плавные переходы */
+.dark-mode * {
+  transition: background-color 0.3s ease, 
+              border-color 0.3s ease, 
+              color 0.3s ease,
+              box-shadow 0.3s ease;
+}

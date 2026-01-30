@@ -1,0 +1,26 @@
+<div class="container mt-4">
+  <h2>{{ isEdit ? 'Edytuj post' : 'Dodaj post' }}</h2>
+
+  <div class="mb-3">
+    <label>Tytuł</label>
+    <input class="form-control" [(ngModel)]="title">
+  </div>
+
+  <div class="mb-3">
+    <label>Treść</label>
+    <textarea
+      class="form-control"
+      rows="4"
+      [(ngModel)]="text">
+    </textarea>
+  </div>
+
+  <div class="mb-3">
+    <label>URL obrazka</label>
+    <input class="form-control" [(ngModel)]="image">
+  </div>
+
+  <button class="btn btn-success" (click)="save()">
+    {{ isEdit ? 'Zapisz zmiany' : 'Zapisz' }}
+  </button>
+</div>

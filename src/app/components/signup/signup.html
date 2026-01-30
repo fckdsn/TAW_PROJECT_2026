@@ -1,0 +1,31 @@
+<div class="container mt-5">
+  <h2>Rejestracja</h2>
+
+  <form autocomplete="off">
+    <input
+      [(ngModel)]="credentials.email"
+      name="email"
+      class="form-control mb-2"
+      placeholder="Email">
+
+    <input
+      [(ngModel)]="credentials.password"
+      name="password"
+      type="password"
+      class="form-control mb-2"
+      placeholder="Hasło">
+
+    <input
+      [(ngModel)]="credentials.name"
+      name="name"
+      class="form-control mb-3"
+      placeholder="Imię">
+
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="create()">
+      Sign up
+    </button>
+  </form>
+</div>
