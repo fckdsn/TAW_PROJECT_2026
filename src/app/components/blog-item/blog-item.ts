@@ -52,7 +52,7 @@ export class BlogItemComponent implements OnInit {
     this.likes = this.likesService.getLikes(this.postId);
   }
 
-  // ❤️
+
   get likesCount(): number {
     return this.likes.length;
   }

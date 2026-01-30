@@ -8,14 +8,12 @@ export const routes: Routes = [
       import('./components/home/home').then(m => m.Home)
   },
 
-  // ✅ BLOG — bez guarda
   {
     path: 'blog',
     loadComponent: () =>
       import('./components/blog-home/blog-home').then(m => m.BlogHomeComponent)
   },
 
-  // ✅ Szczegóły posta
   {
     path: 'blog/detail/:id',
     loadComponent: () =>
@@ -24,7 +22,7 @@ export const routes: Routes = [
     canActivate: [authGuard]
   },
 
-  // ✅ Dodawanie posta
+
   {
     path: 'blog/add',
     loadComponent: () =>
@@ -33,7 +31,6 @@ export const routes: Routes = [
     canActivate: [authGuard]
   },
 
-  // ✅ EDYCJA POSTA (🔥 FIX)
   {
     path: 'blog/edit/:id',
     loadComponent: () =>
@@ -42,7 +39,6 @@ export const routes: Routes = [
     canActivate: [authGuard]
   },
 
-  // ✅ Profil użytkownika
   {
     path: 'user-profile',
     loadComponent: () =>
@@ -65,7 +61,6 @@ export const routes: Routes = [
         .then(m => m.SignupComponent)
   },
 
-  // Fallback
   {
     path: '**',
     redirectTo: ''

@@ -20,7 +20,6 @@
 </ul>
 
 <div class="row">
-  <!-- 🔥 ИСПРАВЛЕНИЕ: используем trackById вместо track item.id -->
   @for (
   item of (visibleItems | filter:filterText | paginate:currentPage:itemsPerPage);
   track item.id

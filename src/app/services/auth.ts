@@ -28,7 +28,7 @@ export class AuthService {
     const token = this.getToken();
     if (!token) return null;
     const decodedToken = this.jwtHelper.decodeToken(token);
-    return decodedToken?.userId || null; // Отримання userId з декодованого токену
+    return decodedToken?.userId || null; 
   }
 
   isLoggedIn(): boolean {

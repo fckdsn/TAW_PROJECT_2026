@@ -10,7 +10,7 @@ import { FavoritesService } from '../../services/favorites';
   styleUrls: ['./blog-item.css']
 })
 export class BlogItemComponent {
-  @Input() id!: string; // 🔥 УБЕДИТЕСЬ что id передается
+  @Input() id!: string; 
   @Input() title!: string;
   @Input() text!: string;
   @Input() image!: string;
@@ -22,15 +22,15 @@ export class BlogItemComponent {
   constructor(private favoritesService: FavoritesService) {}
 
   get isFavorite(): boolean {
-    return this.favoritesService.isFavorite(this.id); // 🔥 Используем id для проверки
+    return this.favoritesService.isFavorite(this.id);
   }
 
   toggleFavorite(): void {
-    this.favoritesService.toggleFavorite(this.id); // 🔥 Используем id для переключения
+    this.favoritesService.toggleFavorite(this.id); 
     this.favoriteChanged.emit();
   }
 
   delete(): void {
-    this.deleted.emit(this.id); // 🔥 Используем id для удаления
+    this.deleted.emit(this.id); 
   }
 }

@@ -26,7 +26,6 @@ export class AddPostComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // 🔥 если есть id в URL — это EDIT
     this.postId = this.route.snapshot.paramMap.get('id');
 
     if (this.postId) {

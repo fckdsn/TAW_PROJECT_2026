@@ -17,7 +17,6 @@ export const authGuard: CanActivateFn = () => {
     return true;
   }
 
-  // ❗ ЯВНЫЙ редирект, без "тихих" переходов
   router.navigate(['/login']);
   return false;
 };

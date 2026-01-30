@@ -9,7 +9,6 @@ export class FavoritesService {
 
   private readonly STORAGE_KEY = 'blog_favorites';
 
-  // 🔥 observable-счётчик
   private countSubject = new BehaviorSubject<number>(0);
   favoritesCount$ = this.countSubject.asObservable();
 
@@ -42,7 +41,6 @@ export class FavoritesService {
     this.countSubject.next(this.read().length);
   }
 
-  // ---------- PUBLIC API ----------
 
   getFavorites(): string[] {
     return this.read();

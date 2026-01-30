@@ -17,7 +17,6 @@ export class DataService {
     });
   }
 
-  // ---------- POSTS ----------
 
   getAll(): Observable<any[]> {
     return this.http.get<any[]>(`${this.url}/posts`);
@@ -50,7 +49,7 @@ export class DataService {
     );
   }
 
-  // ---------- USER ----------
+
 
   getUserProfile(userId: string): Observable<any> {
     return this.http.get<any>(

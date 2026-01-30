@@ -32,7 +32,6 @@ export class BlogComponent implements OnInit {
 
   activeTab: 'all' | 'favorites' = 'all';
 
-  // 🔥 СЧЁТЧИК
   favoritesCount = 0;
 
   constructor(
@@ -44,7 +43,6 @@ export class BlogComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // 🔥 подписка на счётчик favorites
     this.favoritesService.favoritesCount$
       .subscribe(count => this.favoritesCount = count);
 
