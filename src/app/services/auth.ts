@@ -20,16 +20,36 @@ export class AuthService {
     this.isBrowser = isPlatformBrowser(platformId);
   }
 
+  /* ================= TOKEN ================= */
+
   getToken(): string | null {
     return this.isBrowser ? localStorage.getItem('token') : null;
   }
 
+  /* ================= USER ================= */
+
   getUserId(): string | null {
     const token = this.getToken();
     if (!token) return null;
+
     const decodedToken = this.jwtHelper.decodeToken(token);
-    return decodedToken?.userId || null; 
+    return decodedToken?.userId || null;
   }
+
+  getLogin(): string | null {
+    const token = this.getToken();
+    if (!token) return null;
+
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    return payload.login || null;
+  }
+
+  // ✅ ВАЖНО: getter для шаблонов Angular
+  get login(): string | null {
+    return this.getLogin();
+  }
+
+  /* ================= AUTH ================= */
 
   isLoggedIn(): boolean {
     const token = this.getToken();
@@ -59,12 +79,5 @@ export class AuthService {
     if (this.isBrowser) {
       localStorage.removeItem('token');
     }
-  }
-
-  getLogin(): string | null {
-    const token = this.getToken();
-    if (!token) return null;
-    const payload = JSON.parse(atob(token.split('.')[1]));
-    return payload.login;
   }
 }

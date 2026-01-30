@@ -1,13 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+
 import { DataService } from '../../services/data';
 import { RatingComponent } from '../../shared/rating/rating';
+import { CommentsSectionComponent } from '../comments-section/comments-section';
 
 @Component({
   selector: 'app-blog-item-details',
   standalone: true,
-  imports: [CommonModule, RatingComponent],
+  imports: [
+    CommonModule,
+    RatingComponent,
+    CommentsSectionComponent   
+  ],
   templateUrl: './blog-item-details.html',
   styleUrls: ['./blog-item-details.scss']
 })
@@ -27,10 +33,15 @@ export class BlogItemDetailsComponent implements OnInit {
 
     this.dataService.getById(id).subscribe({
       next: post => {
-        this.post = post;
+        this.post = {
+          ...post,
+          id: post.id ?? post._id
+        };
         this.loading = false;
       },
-      error: () => this.loading = false
+      error: () => {
+        this.loading = false;
+      }
     });
   }
 }

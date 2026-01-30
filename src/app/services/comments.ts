@@ -1,40 +1,47 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
-interface Comment {
+export interface Comment {
+  _id: string;
+  postId: string;
   author: string;
   text: string;
+  createdAt: string;
 }
-
-const initialComments: { [key: string]: Comment[] } = {
-  "64549b5362f53f833c89f6ab": [
-    { author: "Jan K.", text: "Świetny post, dużo mi rozjaśnił!" },
-    { author: "Anna M.", text: "Czekam na kolejną część." }
-  ],
-  "645e329db1979e2e900a94d5": [
-    { author: "Piotr", text: "Zgadzam się, kryptografia jest kluczowa." }
-  ]
-};
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommentsService {
 
-  private comments = initialComments;
+  private readonly baseUrl = '/api/comments';
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  getComments(postId: string): Comment[] {
-    return this.comments[postId] || [];
+  private authHeaders(): HttpHeaders {
+    const token = localStorage.getItem('token');
+    return new HttpHeaders({
+      'x-auth-token': token ? `Bearer ${token}` : ''
+    });
   }
 
-  addComment(postId: string, author: string, text: string): void {
-    const newComment: Comment = { author, text };
+  getComments(postId: string): Observable<Comment[]> {
+    return this.http.get<Comment[]>(`${this.baseUrl}/${postId}`);
+  }
 
-    if (!this.comments[postId]) {
-      this.comments[postId] = [];
-    }
+  addComment(postId: string, text: string): Observable<Comment> {
+    return this.http.post<Comment>(
+      this.baseUrl,
+      { postId, text },
+      { headers: this.authHeaders() }
+    );
+  }
 
-    this.comments[postId].push(newComment);
+  deleteComment(commentId: string): Observable<any> {
+    return this.http.delete(
+      `${this.baseUrl}/${commentId}`,
+      { headers: this.authHeaders() }
+    );
   }
 }

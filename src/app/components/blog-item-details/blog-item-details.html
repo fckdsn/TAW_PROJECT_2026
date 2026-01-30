@@ -22,6 +22,14 @@
       <p class="card-text">
         {{ post.text }}
       </p>
+
+      <hr>
+
+      <comments-section
+        *ngIf="post"
+        [postId]="post.id">
+      </comments-section>
+
     </div>
   </div>
 </div>

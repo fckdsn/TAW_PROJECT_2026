@@ -33,6 +33,8 @@ System polubień postów
 
 Ocena postów (rating)
 
+Komentarze pod postami
+
 Paginacja listy postów
 
 Filtrowanie postów

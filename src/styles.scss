@@ -257,17 +257,342 @@
   color: #f1f5f9;
 }
 
-/* Иконки сердечек для лайков */
-.dark-mode .fa-heart {
-  color: #ef4444 !important;
+/* ===== СТИЛИ ДЛЯ ЛАЙКОВ ===== */
+
+/* Иконки сердечек для лайков (белый режим) */
+.fa-heart,
+.bi-heart-fill {
+  color: #ef4444 !important; /* Красный для лайкнутых */
 }
 
-.dark-mode .fa-heart-o {
-  color: #94a3b8 !important;
+.fa-heart-o,
+.bi-heart,
+.fa-regular.fa-heart {
+  color: #6b7280 !important; /* Серый для нелайкнутых в светлом режиме */
 }
 
-.dark-mode .fa-heart-o:hover {
-  color: #ef4444 !important;
+.fa-heart-o:hover,
+.bi-heart:hover,
+.fa-regular.fa-heart:hover {
+  color: #ef4444 !important; /* Красный при наведении */
+}
+
+/* Темный режим для лайков */
+.dark-mode .fa-heart-o,
+.dark-mode .bi-heart,
+.dark-mode .fa-regular.fa-heart {
+  color: #94a3b8 !important; /* Светло-серый для нелайкнутых в темном режиме */
+}
+
+.dark-mode .fa-heart-o:hover,
+.dark-mode .bi-heart:hover,
+.dark-mode .fa-regular.fa-heart:hover {
+  color: #ef4444 !important; /* Красный при наведении */
+}
+
+/* Счетчик лайков */
+.likes-count {
+  font-weight: 600;
+  color: #4b5563;
+}
+
+.dark-mode .likes-count {
+  color: #cbd5e1 !important;
+}
+
+/* Контейнер для лайков */
+.like-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  transition: background-color 0.2s ease;
+}
+
+.like-container:hover {
+  background-color: rgba(239, 68, 68, 0.1);
+}
+
+.dark-mode .like-container:hover {
+  background-color: rgba(239, 68, 68, 0.15);
+}
+
+/* Кнопка лайка */
+.like-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.like-btn:hover {
+  transform: scale(1.1);
+  background-color: rgba(239, 68, 68, 0.1);
+}
+
+.dark-mode .like-btn:hover {
+  background-color: rgba(239, 68, 68, 0.15);
+}
+
+.like-btn.liked {
+  animation: pulse 0.3s ease;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* ===== СТИЛИ ДЛЯ КОММЕНТАРИЕВ ===== */
+
+/* Контейнер комментариев */
+.comments-container {
+  background-color: #f9fafb;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.dark-mode .comments-container {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+}
+
+/* Заголовок комментариев */
+.comments-title {
+  color: #1f2937;
+  font-weight: 600;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.dark-mode .comments-title {
+  color: #f3f4f6;
+  border-bottom-color: #374151;
+}
+
+/* Список комментариев */
+.comments-list {
+  margin-bottom: 20px;
+}
+
+/* Отдельный комментарий */
+.comment-item {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 12px;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.comment-item:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-color: #d1d5db;
+}
+
+.dark-mode .comment-item {
+  background-color: #334155;
+  border-color: #475569;
+  color: #e5e7eb;
+}
+
+.dark-mode .comment-item:hover {
+  border-color: #64748b;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Заголовок комментария */
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.comment-author {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.dark-mode .comment-author {
+  color: #f3f4f6;
+}
+
+.comment-date {
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+.dark-mode .comment-date {
+  color: #9ca3af;
+}
+
+/* Текст комментария */
+.comment-text {
+  color: #374151;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.dark-mode .comment-text {
+  color: #d1d5db;
+}
+
+/* Действия с комментарием */
+.comment-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.comment-action-btn {
+  background: none;
+  border: none;
+  color: #6b7280;
+  font-size: 0.875rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.comment-action-btn:hover {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+.dark-mode .comment-action-btn {
+  color: #9ca3af;
+}
+
+.dark-mode .comment-action-btn:hover {
+  background-color: #475569;
+  color: #e5e7eb;
+}
+
+/* Форма добавления комментария */
+.comment-form {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.dark-mode .comment-form {
+  background-color: #334155;
+  border-color: #475569;
+}
+
+.comment-form-title {
+  color: #1f2937;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.dark-mode .comment-form-title {
+  color: #f3f4f6;
+}
+
+/* Поле ввода комментария */
+.comment-textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  resize: vertical;
+  font-family: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.comment-textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.dark-mode .comment-textarea {
+  background-color: #1e293b;
+  border-color: #475569;
+  color: #f3f4f6;
+}
+
+.dark-mode .comment-textarea:focus {
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
+}
+
+/* Кнопка отправки комментария */
+.comment-submit-btn {
+  margin-top: 12px;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.comment-submit-btn:hover:not(:disabled) {
+  background-color: #2563eb;
+}
+
+.comment-submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.dark-mode .comment-submit-btn {
+  background-color: #60a5fa;
+}
+
+.dark-mode .comment-submit-btn:hover:not(:disabled) {
+  background-color: #3b82f6;
+}
+
+/* Пустой список комментариев */
+.no-comments {
+  text-align: center;
+  color: #6b7280;
+  padding: 40px 20px;
+  font-style: italic;
+}
+
+.dark-mode .no-comments {
+  color: #9ca3af;
+}
+
+/* Аватар автора комментария */
+.comment-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #3b82f6;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  margin-right: 12px;
+}
+
+/* Индикатор загрузки комментариев */
+.comments-loading {
+  text-align: center;
+  padding: 20px;
+  color: #6b7280;
+}
+
+.dark-mode .comments-loading {
+  color: #9ca3af;
 }
 
 /* Рейтинг */
@@ -338,6 +663,17 @@
   
   .dark-mode .dropdown-menu {
     background-color: #334155;
+  }
+  
+  /* Адаптивные комментарии */
+  .comment-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  
+  .comment-actions {
+    justify-content: flex-start;
   }
 }
 

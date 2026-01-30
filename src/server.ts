@@ -45,11 +45,34 @@ const PostSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now },
 });
 
+const CommentSchema = new mongoose.Schema({
+  postId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Post',
+    required: true
+  },
+  author: {
+    type: String,
+    required: true
+  },
+  text: {
+    type: String,
+    required: true
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
+});
+
 const User =
   mongoose.models['User'] || mongoose.model('User', UserSchema);
 
 const Post =
   mongoose.models['Post'] || mongoose.model('Post', PostSchema);
+
+const Comment =
+  mongoose.models['Comment'] || mongoose.model('Comment', CommentSchema);
 
 const app = express();
 const angularApp = new AngularNodeAppEngine();
@@ -58,7 +81,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-/* ===== USER ===== */
+/*  USER */
 
 app.post('/api/user/create', async (req, res) => {
   try {
@@ -110,7 +133,7 @@ app.post('/api/user/auth', async (req, res) => {
   }
 });
 
-/* ===== AUTH MIDDLEWARE ===== */
+/* AUTH MIDDLEWARE  */
 
 const authMiddleware = (req: any, res: any, next: any) => {
   const header = req.headers['x-auth-token'];
@@ -127,7 +150,7 @@ const authMiddleware = (req: any, res: any, next: any) => {
   }
 };
 
-/* ===== POSTS ===== */
+/*  POST */
 
 app.get('/api/posts', async (_req, res) => {
   const posts = await Post.find().sort({ createdAt: -1 });
@@ -162,6 +185,7 @@ app.post('/api/posts', authMiddleware, async (req: any, res) => {
 
   return res.status(201).json(post);
 });
+
 app.put('/api/posts/:id', authMiddleware, async (req: any, res) => {
   try {
     const post = await Post.findById(req.params.id);
@@ -202,8 +226,60 @@ app.delete('/api/posts/:id', authMiddleware, async (req: any, res) => {
   }
 });
 
+/*СOMMENTS */
 
-/* ===== SSR ===== */
+app.get('/api/comments/:postId', async (req, res) => {
+  try {
+    const comments = await Comment
+      .find({ postId: req.params.postId })
+      .sort({ createdAt: -1 });
+
+    return res.json(comments);
+  } catch (err) {
+    return res.status(500).json({ error: 'Load comments failed' });
+  }
+});
+
+app.post('/api/comments', authMiddleware, async (req: any, res) => {
+  try {
+    const { postId, text } = req.body;
+
+    if (!text) {
+      return res.status(400).json({ error: 'Empty comment' });
+    }
+
+    const comment = await Comment.create({
+      postId,
+      text,
+      author: req.user.login
+    });
+
+    return res.status(201).json(comment);
+  } catch (err) {
+    return res.status(500).json({ error: 'Add comment failed' });
+  }
+});
+
+app.delete('/api/comments/:id', authMiddleware, async (req: any, res) => {
+  try {
+    const comment = await Comment.findById(req.params.id);
+
+    if (!comment) {
+      return res.status(404).json({ error: 'Comment not found' });
+    }
+
+    if (comment.author !== req.user.login) {
+      return res.status(403).json({ error: 'No permission' });
+    }
+
+    await comment.deleteOne();
+    return res.json({ success: true });
+  } catch {
+    return res.status(500).json({ error: 'Delete failed' });
+  }
+});
+
+/* SSR  */
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
