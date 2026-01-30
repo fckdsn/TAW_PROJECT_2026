@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
+
 import { DataService } from '../../services/data';
 import { BlogItemComponent } from '../blog-item/blog-item';
 import { FilterTextPipe } from '../../pipes/filter-text-pipe';
@@ -44,7 +45,13 @@ export class BlogComponent implements OnInit {
   ngOnInit(): void {
 
     this.favoritesService.favoritesCount$
-      .subscribe(count => this.favoritesCount = count);
+      .subscribe(count => {
+        this.favoritesCount = count;
+
+        if (this.activeTab === 'favorites') {
+          this.updateVisibleItems(false);
+        }
+      });
 
     this.route.queryParams.subscribe(params => {
       this.currentPage = +params['page'] || 1;
@@ -57,18 +64,10 @@ export class BlogComponent implements OnInit {
   loadPosts(): void {
     this.service.getAll().subscribe(posts => {
 
-      this.items = posts.map(p => {
-        const id = p.id ?? p._id;
-
-        if (!id) {
-          console.error('POST WITHOUT ID!', p);
-        }
-
-        return {
-          ...p,
-          id: String(id)
-        };
-      });
+      this.items = posts.map(p => ({
+        ...p,
+        id: String(p.id ?? p._id)
+      }));
 
       this.updateVisibleItems(true);
     });
