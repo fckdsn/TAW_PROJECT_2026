@@ -1,14 +1,14 @@
-# Angular Blog
+Node.js versja 22.12+
 
-Angular + Node.js + MongoDB blog application with JWT authentication.
 
-## Tech stack
-- Angular
-- Node.js
-- Express
-- MongoDB
-- JWT
+npm install -g @angular/cli
+npm install express
+npm install mongoose
+npm install cors
+npm install jsonwebtoken
+npm install bcryptjs
+npm install dotenv
 
-## Run
 npm install
-npm start
+
+npx ng serve / ng serve - uruchomienie
